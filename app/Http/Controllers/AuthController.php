@@ -92,7 +92,7 @@ class AuthController extends Controller
                 'error' => 'El matriculado no se encuentra o no tiene su matricula al dia.',
             ],401);
         }
-        $user = User::where('id_matricula',$matricula)->first();
+        $user = User::where('matricula',$matricula)->first();
         if($user){
             return response()->json([
                 'error' => 'El matriculado ya se encuentra registrado.',
@@ -101,7 +101,7 @@ class AuthController extends Controller
         try {
           $user = new User;
           $user->email = $email;
-          $user->id_matricula = $matricula;
+          $user->matricula = $matricula;
           $user->web_claveAPP = Hash::make($password);
           $user->fecha_alta = Carbon::now();
           $user->save();

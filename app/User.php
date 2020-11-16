@@ -60,4 +60,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function afiliado(){
+        return $this->hasOne('App\Views\AfiliadoAlDiaActivoView','id','matricula');
+    }
 }
