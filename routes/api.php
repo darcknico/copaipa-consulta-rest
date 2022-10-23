@@ -33,6 +33,7 @@ Route::prefix('tabla-aportes')->group(function () {
 	Route::get('detalles', 'TablaAporteController@detalles');
 	Route::get('subcertificaciones', 'TablaAporteController@subcertificaciones');
 	Route::post('detalles/reporte', 'TablaAporteController@reporte');
+	Route::post('detalles/reporte/test', 'TablaAporteController@reporte_test');
 });
 
 Route::prefix('novedades')->group(function(){

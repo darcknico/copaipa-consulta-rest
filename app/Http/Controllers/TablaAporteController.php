@@ -134,4 +134,40 @@ class TablaAporteController extends Controller
       'file' => $file,
     ],200);
   }
+
+  public function reporte_test(Request $request){
+    $detalles = [
+      'data' => json_decode($request->getContent(),true),
+    ];
+    $json = 'reportes/'.uniqid().'.json';
+    \Storage::put($json, json_encode($detalles));
+    $json_file = storage_path("app/".$json);
+    $jasper = new JasperPHP;
+    $input = storage_path("app/reportes/copaipa_consulta_aportes.jrxml");
+    $output = storage_path("app/reportes/".uniqid());
+    $ext = "pdf";
+
+    $jasper->process(
+        $input,
+        $output,
+        [$ext],
+        [
+          'REPORT_LOCALE' => 'es',
+          "logo" => storage_path("app/logo/logo.png"),
+        ],
+        [
+          "driver"=>"json",
+          "json_query" => "data",
+          "data_file" =>  $json_file
+        ]
+    )->execute();
+    
+    $file = base64_encode(file_get_contents($output . '.' . $ext));
+    $filename ='copaipa_detalle_aportes.pdf';
+
+    return response()->download(
+        $output . '.' . $ext, 
+        $filename,
+        ['Content-Type: application/pdf'])->deleteFileAfterSend();
+  }
 }

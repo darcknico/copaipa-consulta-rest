@@ -27,7 +27,7 @@ class AuthController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
         if (!$token = auth()->attempt(['email'=> $email,'password'=>$password])) {
-            return response()->json(['error' => 'Email o contraseña incorrectos'], 401);
+            return response()->json(['error' => 'Email o contraseña incorrectos'], 403);
         }
         $recovery = false;
         if( preg_match("/^\d+$/", $password) ) {
@@ -75,13 +75,13 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(),[
-          'email' => 'required | email',
+          'email' => 'required | email | unique:web_usuario_app,web_usuarioAPP',
           'password' => 'required',
           'c_password' => 'required | same:password',
           'matricula' => 'required',
         ]);
         if($validator->fails()){
-          return response()->json(['error'=>$validator->errors()],401);
+          return response()->json(['error'=>$validator->errors()],403);
         }
         $email = $request->input('email');
         $password = $request->input('password');
@@ -90,13 +90,13 @@ class AuthController extends Controller
         if(!$afiliado){
             return response()->json([
                 'error' => 'El matriculado no se encuentra o no tiene su matricula al dia.',
-            ],401);
+            ],403);
         }
         $user = User::where('matricula',$matricula)->first();
         if($user){
             return response()->json([
                 'error' => 'El matriculado ya se encuentra registrado.',
-            ],401);
+            ],403);
         }
         try {
           $user = new User;
@@ -108,7 +108,7 @@ class AuthController extends Controller
         } catch(\Illuminate\Database\QueryException $e){
             $errorCode = $e->errorInfo[1];
             if($errorCode == '1062'){
-                return response()->json(['error'=>'Email Duplicado'],401);
+                return response()->json(['error'=>'Email Duplicado'],403);
             }
         }
         $token = auth()->attempt(['email'=> $email,'password'=>$password]);
@@ -129,14 +129,14 @@ class AuthController extends Controller
           'email' => 'required',
         ]);
         if($validator->fails()){
-          return response()->json(['error'=>$validator->errors()],401);
+          return response()->json(['error'=>$validator->errors()],403);
         }
         $email = $request->input('email');
         $user = User::where('email',$email)->first();
         if(!$user){
             return response()->json([
                 'error' => 'El correo no esta registrado.',
-            ],401);
+            ],403);
         }
         $password = sprintf("%06d", mt_rand(1, 999999));
         Mail::send('mails.auth',[
@@ -149,7 +149,7 @@ class AuthController extends Controller
         if (Mail::failures()) {
             return response()->json([
                 'error' => 'El correo no pudo ser enviado.',
-            ],401);
+            ],403);
         } else {
             $enviado = true;
             $user->web_claveAPP = Hash::make($password);
@@ -167,7 +167,7 @@ class AuthController extends Controller
           'c_password' => 'required | same:n_password',
         ]);
         if($validator->fails()){
-          return response()->json(['error'=>$validator->errors()],401);
+          return response()->json(['error'=>$validator->errors()],403);
         }
         $user = auth()->user();
         $password = $request->input('password');
@@ -176,13 +176,13 @@ class AuthController extends Controller
         if (!(Hash::check($password, $user->web_claveAPP))) {
             return response()->json([
                 'error' => 'La contraseña actual no es la correcta.',
-            ],401);
+            ],403);
         }
 
         if(strcmp($password, $n_password) == 0){
             return response()->json([
                 'error' => 'La contraseña actual no es la correcta.',
-            ],401);
+            ],403);
         }
         $user->web_claveAPP = Hash::make($n_password);
         $user->save();
