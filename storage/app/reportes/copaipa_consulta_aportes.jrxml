@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="copaipa_consulta_aportes" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e74bbc29-063f-4d94-891f-9678d61c0540">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="logo" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<queryString language="json">
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="id"/>
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="id_tarea" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="id_tarea"/>
+		<fieldDescription><![CDATA[id_tarea]]></fieldDescription>
+	</field>
+	<field name="id_subtarea" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="id_subtarea"/>
+		<fieldDescription><![CDATA[id_subtarea]]></fieldDescription>
+	</field>
+	<field name="id_subcategoria" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="id_subcategoria"/>
+		<fieldDescription><![CDATA[id_subcategoria]]></fieldDescription>
+	</field>
+	<field name="tarea" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="tarea"/>
+		<fieldDescription><![CDATA[tarea]]></fieldDescription>
+	</field>
+	<field name="subtarea" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="subtarea"/>
+		<fieldDescription><![CDATA[subtarea]]></fieldDescription>
+	</field>
+	<field name="descuento_descripcion" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="descuento_descripcion"/>
+		<fieldDescription><![CDATA[descuento_descripcion]]></fieldDescription>
+	</field>
+	<field name="cantidad" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="cantidad"/>
+		<fieldDescription><![CDATA[cantidad]]></fieldDescription>
+	</field>
+	<field name="unidad" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="unidad"/>
+		<fieldDescription><![CDATA[unidad]]></fieldDescription>
+	</field>
+	<field name="importe" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="importe"/>
+		<fieldDescription><![CDATA[importe]]></fieldDescription>
+	</field>
+	<field name="descuento" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="descuento"/>
+		<fieldDescription><![CDATA[descuento]]></fieldDescription>
+	</field>
+	<field name="descuento_aplicado" class="java.lang.Boolean">
+		<property name="net.sf.jasperreports.json.field.expression" value="descuento_aplicado"/>
+		<fieldDescription><![CDATA[descuento_aplicado]]></fieldDescription>
+	</field>
+	<variable name="importe1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{importe}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="8" y="0" width="100" height="100" uuid="591b7082-30aa-4499-82b5-b87484453c40"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="115" y="10" width="430" height="40" uuid="c3c92671-65d2-4269-8b53-320d1e4e0f50"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Consejo Profesional de Agrimensores, Ingenieros y Profesiones Afines de Salta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="60" width="115" height="18" uuid="3dc0e857-9690-4af3-a3cf-371b68bbff00"/>
+				<text><![CDATA[General Güemes 529]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="78" width="115" height="18" uuid="2f103e53-867c-497c-b7b3-a65136fc5f2c"/>
+				<text><![CDATA[Salta
+]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="4" width="265" height="30" uuid="806cd1cf-8976-489e-bfc4-356400510ed5"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Tabla de aportes]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="25" y="0" width="100" height="24" uuid="8417d5cb-7c17-4436-b694-f350d6d81812">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b91b1cd1-4673-42b0-8fea-3e6348f2725b"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Certificacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="0" width="100" height="24" uuid="23580119-b05a-4ffe-8a80-86da788791f1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="92984c96-47c1-45be-88b6-75c2df75d9f4"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Subtarea]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="0" width="65" height="24" uuid="0508413c-6ecd-4e29-b7ee-7c90bdb3ccea">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="efcaad0b-081b-4d0a-9fff-214f31a31766"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="0" width="65" height="24" uuid="a2d437a2-73ed-4529-828f-f6bd775267e0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9f6b5c50-471d-45a4-85a9-cdc40b71dbb0"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Unidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="490" y="0" width="65" height="24" uuid="922505cc-f551-4376-bbe0-63d2af4f26ce">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="736eeb8f-bf39-49ea-9b5d-ee9773268665"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Costo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="150" height="20" uuid="3415526a-b963-4f35-95d7-791a609b192a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b91b1cd1-4673-42b0-8fea-3e6348f2725b"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tarea}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="150" y="0" width="210" height="20" uuid="befc6d9d-a94f-491d-92da-3881940107b1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="92984c96-47c1-45be-88b6-75c2df75d9f4"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subtarea}+" - "+$F{descuento_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###;(#,##0.###-)">
+				<reportElement positionType="FixRelativeToBottom" x="360" y="13" width="65" height="12" uuid="620f6380-8ff2-48a8-99a4-f8f104afab8a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="efcaad0b-081b-4d0a-9fff-214f31a31766"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="425" y="13" width="65" height="12" uuid="7efec0b1-e458-4b4e-92c5-9b5d8a10dc6b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9f6b5c50-471d-45a4-85a9-cdc40b71dbb0"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$#,##0.00;$-#,##0.00" isBlankWhenNull="true">
+				<reportElement positionType="FixRelativeToBottom" x="490" y="13" width="65" height="12" uuid="3ccaa3c5-90d3-4b5e-a419-92dd0a01e8c0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="736eeb8f-bf39-49ea-9b5d-ee9773268665"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{importe}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="0" width="553" height="1" uuid="7426b532-93db-4462-b1fc-8490e3acdbbf"/>
+			</line>
+			<textField>
+				<reportElement x="425" y="0" width="129" height="13" uuid="c4102233-c568-45d0-92df-98ce123c4768">
+					<printWhenExpression><![CDATA[$F{descuento_aplicado} && $F{descuento}>0]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["descuento aplicado del "+$F{descuento}+"%"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="55" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="60" splitType="Stretch">
+			<textField>
+				<reportElement x="80" y="0" width="400" height="30" uuid="d2ea2200-fe8e-43e8-aa85-cd2f1600bcdf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["El presente documento tiene caracter informativo "+DATEFORMAT(NOW(),"dd-MM-yyyy hh:mm:ss")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="369" y="30" width="185" height="30" uuid="a5bebf38-6269-42e4-82bf-26d5926ca5b5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="390" y="0" width="70" height="30" uuid="7f98b814-d95c-4fac-b705-79b77390a253"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<textField pattern="$#,##0.00;$-#,##0.00">
+				<reportElement x="460" y="0" width="94" height="30" uuid="4dc15347-e9d6-4be4-be36-7d767b001227"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{importe1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="553" height="1" uuid="341ca35a-3ca4-4038-96c5-5b1416790244"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

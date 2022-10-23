@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="copaipa_consulta_matricula_reciprocidad" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3aab99e5-203f-4a82-8aa4-86c0d763e0f3">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="copaipa.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="matricula" class="java.lang.String">
+		<defaultValueExpression><![CDATA["00104349"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="firma" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="id_colegio" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[15]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select *,
+	(
+		select colegio_consejo 
+		from  copaipa2.view_listado_consejos_y_colegios
+		where id =  $P{id_colegio} 
+	) as colegio
+from view_matriculados_para_constancia_reciprocidad
+where
+id like  $P{matricula}]]>
+	</queryString>
+	<field name="id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="profesion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="profesion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="profesiones2"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="tipo_documento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tipo_documento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="Nro_Doc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Nro_Doc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="DIreccion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DIreccion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="Localidad" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Localidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="codigo_postal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="codigo_postal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="Telefonos" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Telefonos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="celular" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="celular"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="Universidad" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Universidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="universidad"/>
+	</field>
+	<field name="fechaTitulo" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="fechaTitulo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliadosprofesiones"/>
+	</field>
+	<field name="Postgrado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Postgrado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="Fecha_Matricula" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="Fecha_Matricula"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="colegio" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="colegio"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="170" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="50" y="30" width="248" height="79" uuid="d5c26e20-cad2-4959-9fae-3bc87c828cfe"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="150" y="140" width="260" height="30" uuid="82c76e66-0e3b-4113-976e-15619f48faf5"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CERTIFICADO DE MATRICULACIÓN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="110" splitType="Stretch">
+			<textField>
+				<reportElement x="56" y="0" width="440" height="110" uuid="8508093a-0b85-455c-99db-e97b358802aa"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="11" isItalic="true"/>
+					<paragraph lineSpacing="Proportional" lineSpacingSize="1.15" firstLineIndent="48"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En el marco del convenio de Reciprocidad de Matrícula suscripto entre el Consejo Profesional de Agrimensores, Ingenieros y Profesionales Afines de la Provincia de Salta, y el "+$F{colegio}+", dejamos expresa constancia que el profesional cuyo datos se consignan abajo ha procedido al cumplimiento de lo establecido en la Ley Provincial N° 4.591 en materia de matriculación y habilitación para el año en curso, como así también que no registra sanciones por parte del Tribunal de Ética.-"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="300">
+			<textField>
+				<reportElement x="169" y="0" width="327" height="20" uuid="a3ecee46-c622-4d68-9f83-72f44f1f8e76"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="20" width="387" height="20" uuid="715c60c3-4551-43d2-93a7-2454e96497ca"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DIreccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="40" width="169" height="20" uuid="7fa9bded-fd28-43df-83ba-8c71752ae451"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Localidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="359" y="40" width="136" height="20" uuid="5c9363c9-57cf-4107-a291-90aad4946fb6"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo_postal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="149" y="60" width="347" height="20" uuid="7383f842-3572-47ba-a7df-0eb33268d558"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Telefonos}+" "+$F{celular}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="189" y="80" width="307" height="20" uuid="8eab6c13-81f7-4300-b707-5eeaf7b8dfe2"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo_documento}+" "+$F{Nro_Doc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="100" width="387" height="20" uuid="5c89cca3-5ce3-4244-926b-8dec8e3aa3aa"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{profesion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="121" y="120" width="375" height="20" uuid="a6c238d0-b50c-4937-b10f-5c86b11959dd"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Universidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="169" y="140" width="109" height="20" uuid="b685a355-3e06-4ffa-81fc-8d1392029aa5"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaTitulo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="56" y="140" width="113" height="20" uuid="61530dc5-9ec4-4479-a5da-35992782563d"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Fecha otorgamiento: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="169" y="160" width="327" height="20" uuid="394e3a0d-3fac-4813-9ae2-95dbf1e89217"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Postgrado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="180" width="150" height="20" uuid="cb8c4ae6-0fff-401c-b44f-138929554994"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="389" y="180" width="107" height="20" uuid="38e46dff-ea6c-4386-97a1-657bcfafad12"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Fecha_Matricula}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="259" y="180" width="130" height="20" uuid="1ac728eb-54db-42b6-a27f-cf908428143b"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Fecha de matriculación: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="200" width="439" height="30" uuid="eaf62f2d-b8cb-4953-8ae8-152d9f97ef29"/>
+				<textElement markup="html">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Caja de jubilación: <b>Caja de Previsión Social para Agrimensores, Arquitectos, Ingenieros y Profesionales Afines de Salta.-</b>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="57" y="240" width="439" height="60" uuid="ba1e4430-63e7-4703-bc4d-88a2a90242be"/>
+				<textElement>
+					<font fontName="Arial" size="11" isItalic="true"/>
+					<paragraph lineSpacing="Proportional" lineSpacingSize="1.15" firstLineIndent="48"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El presente se extiende a solicitud del interesado para ser presentado ante el "+$F{colegio}+", el día "+(new java.text.SimpleDateFormat("EEEEE dd MMMMM yyyy hh:mm aaa",new Locale("es", "ES"))).format(new Date())+"."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="56" y="180" width="53" height="20" uuid="80e11cdf-03c9-4ce5-98d4-8d89225b4633"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Matricula: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="160" width="113" height="20" uuid="187df08a-a6ce-43ba-8e4c-9c66b66b1579"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Carrera de Posgrado: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="120" width="65" height="20" uuid="5534f89b-2847-4ea3-ba3c-870b1eae2302"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Universidad: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="100" width="53" height="20" uuid="410976ed-88ec-4c69-a2aa-37fec4d327b7"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Profesión: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="80" width="133" height="20" uuid="86278fc0-59c7-47c3-845f-b98810ffc67d"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Tipo y N° de documento: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="60" width="93" height="20" uuid="a2e11ae9-12f4-47ca-af2c-31abec5af200"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Teléfono / Celular: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="40" width="53" height="20" uuid="b57eb16a-f783-47aa-b63b-8dd6027424ab"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Localidad: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="40" width="80" height="20" uuid="e6c846d0-1c99-4cb1-bca7-6470d578b1fd"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Código Postal: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="20" width="53" height="20" uuid="4f603239-7d10-44f6-9fb6-fc8e75cdd69d"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Domicilio: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="0" width="113" height="20" uuid="3ff2e693-299d-472f-b21f-8b40ee8fa03e"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Apellido y nombre(s):]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="171" splitType="Stretch">
+			<image hAlign="Right" vAlign="Middle">
+				<reportElement x="230" y="0" width="257" height="93" uuid="d0083e03-4321-41a0-8b7d-3fb4859db809"/>
+				<imageExpression><![CDATA[$P{firma}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="157" width="550" height="14" uuid="12f306d1-b176-4934-b601-bc42d22e95eb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[El Sello y Firma digitalizados son válidos.-]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

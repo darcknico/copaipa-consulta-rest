@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="copaipa_consulta_matricula" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2bdd5c67-b5e0-4ca4-91fb-6ea27ad99a58">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="copaipa.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="matricula" class="java.lang.String">
+		<defaultValueExpression><![CDATA["562"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="firma" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select 
+nombre,
+profesion,
+email,
+tipo_documento,
+Nro_Doc
+from afiliados_al_dia_activos
+where
+id like $P{matricula}]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="profesion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="profesion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="tipo_documento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tipo_documento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<field name="Nro_Doc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Nro_Doc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="afiliados"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="294" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="80" y="80" width="248" height="79" uuid="c286fde8-dfcd-4b35-b255-85647f3a7ce1"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="230" y="250" width="100" height="30" uuid="0ed6e39a-c859-42ff-80fd-3cc59bfbd0d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CERTIFICADO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="184" splitType="Stretch">
+			<textField>
+				<reportElement x="60" y="13" width="440" height="77" uuid="34d915f9-254a-4efd-b79a-98bb1b0bb757"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="11" isItalic="true"/>
+					<paragraph lineSpacing="Proportional" lineSpacingSize="1.15" firstLineIndent="48"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El Consejo Profesional de Agrimensores, Ingenieros y Profesiones Afines de Salta certifica que el / la "+
+$F{profesion}+" "+
+$F{nombre}+", "+
+$F{tipo_documento}+" N°"+
+$F{Nro_Doc}+", registra inscripción en esta Institución bajo el número de Matrícula Nº "+
+$P{matricula}+" encontrándose al día de la fecha."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="93" width="440" height="91" uuid="d048123f-63a2-411e-8a4a-4b8ba5017967"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="11" isItalic="true"/>
+					<paragraph lineSpacing="Proportional" lineSpacingSize="1.15" firstLineIndent="48"/>
+				</textElement>
+				<textFieldExpression><![CDATA["A los efectos de ser presentado ante la entidad correspondiente, para hacer uso del beneficio, de acuerdo al convenio oportunamente establecido, se expide la presente en la ciudad de Salta, el día "+(new java.text.SimpleDateFormat("EEEEE dd MMMMM yyyy hh:mm aaa",new Locale("es", "ES"))).format(new Date())+"."]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="44" splitType="Stretch"/>
+	</detail>
+	<pageFooter>
+		<band height="184" splitType="Stretch">
+			<image hAlign="Right" vAlign="Middle">
+				<reportElement x="230" y="12" width="257" height="93" uuid="fded80be-7fa9-4dd4-a4ee-58d85804150b"/>
+				<imageExpression><![CDATA[$P{firma}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="170" width="550" height="14" uuid="c6bb4b26-a39b-48c5-befc-2f85ccf75ee7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[El Sello y Firma digitalizados son válidos.-]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
